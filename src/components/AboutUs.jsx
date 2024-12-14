@@ -13,22 +13,23 @@ export default function AboutUs(){
           <img
             src={Faisal}
             alt="Md. Faisal Ahmed"
-            className="hover:scale-110 transition-transform duration-300"
+            className="hover:scale-110 transition-transform duration-300 lg:w-[56rem]"
           />
           <div className="p-4">
-            <h2 className="text-sm font-bold">Md. Faisal Ahmed</h2>
+            <h2 className="text-base font-bold">Md. Faisal Ahmed</h2>
             <p className="text-xs">East Delta University</p>
           </div>
         </div>
         {/* Card 2 */}
-        <div className="bg-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-transform duration-300 glow-effect rounded-lg overflow-hidden">
+        <div className="bg-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-transform duration-300 glow-effect rounded-lg overflow-hidden ">
+
           <img
             src={Mishfa}
             alt="Lazima Mishfa"
-            className="hover:scale-110 transition-transform duration-300"
+            className="hover:scale-110 transition-transform duration-300 lg:w-[56rem]"
           />
           <div className="p-4">
-            <h2 className="text-sm font-bold">Lazima Mishfa</h2>
+            <h2 className="text-base font-bold">Lazima Anwar Mishfa</h2>
             <p className="text-xs">East Delta University</p>
           </div>
         </div>
@@ -37,10 +38,10 @@ export default function AboutUs(){
           <img
             src={Saqib}
             alt="Md. Shahidul Islam Sakib"
-            className="hover:scale-110 transition-transform duration-300"
+            className="hover:scale-110 transition-transform duration-300 lg:w-[56rem]"
           />
           <div className="p-4">
-            <h2 className="text-sm font-bold">Md. Shahidul Islam Sakib</h2>
+            <h2 className="text-base font-bold">Md. Shahidul Islam Sakib</h2>
             <p className="text-xs">East Delta University</p>
           </div>
         </div>
