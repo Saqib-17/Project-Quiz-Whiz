@@ -11,29 +11,35 @@ export default function Header(){
             <div className="hidden lg:flex">
               <ul className="flex space-x-4">
                 <li>
+                  <button>
                   <a className="text-primary-color lg:text-lg hover:text-pink transition-colors duration-300">
                     Features
                   </a>
+                  </button>
                 </li>
                 <li>
-                  <a className="text-primary-color lg:text-lg hover:text-pink transition-colors duration-300">
+                 <button>
+                 <a className="text-primary-color lg:text-lg hover:text-pink transition-colors duration-300">
                     Solution
                   </a>
+                 </button>
                 </li>
                 <li>
-                  <a className="text-primary-color lg:text-lg hover:text-pink transition-colors duration-300">
+                  <button><a className="text-primary-color lg:text-lg hover:text-pink transition-colors duration-300">
                     Support
-                  </a>
+                  </a></button>
                 </li>
               </ul>
             </div>
             <div>
+              <button>
               <a
                 onClick={() => (window.location.href = "signup.html")}
                 className="lg:text-lg bg-primary-color font-medium rounded-full px-8 py-2 text-white hover:bg-pink transition-transform transform hover:scale-105"
               >
                 Try for free
               </a>
+              </button>
             </div>
           </div>
         </nav>
