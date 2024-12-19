@@ -6,6 +6,7 @@ import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import SignupForm from './components/SignupForm';
 import Group from './components/Group';
+import Subject from './components/Subject';  // Import the Subject component
 
 function App() {
   return (
@@ -15,7 +16,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />} />
           <Route path="/signupform" element={<Header />} />
-          {/* Don't render Header on /group route */}
         </Routes>
 
         {/* Render all the routes */}
@@ -23,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signupform" element={<SignupForm />} />
           <Route path="/group" element={<Group />} />
+          <Route path="/subject" element={<Subject />} />  {/* Ensure the /subject route is here */}
         </Routes>
 
         {/* Always render AboutUs and Footer */}
