@@ -1,11 +1,37 @@
-import { useState } from 'react';
-import singupdp from '../assets/form-dp.svg'
+import { useState } from "react";
+import singupdp from '../assets/form-dp.svg';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase.js";
+import { getFirebaseErrorMessage } from "../firebase/firebaseErrors.js"; // Import error handler
+
 
 export default function SignupForm() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const openModal = () => setModalVisible(true);
   const closeModal = () => setModalVisible(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      openModal();
+    } catch (error) {
+      // Use the custom error handler to get user-friendly messages
+      const customMessage = getFirebaseErrorMessage(error.code);
+      setError(customMessage);
+    }
+  };
 
   return (
     <div className="bg-secondary-color flex items-center justify-center min-h-screen playwrite">
@@ -23,22 +49,42 @@ export default function SignupForm() {
           <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800 text-center md:text-left">Create a New Account</h2>
           <p className="text-gray-600 mb-6 text-sm sm:text-base text-center md:text-left">Join QuizWhiz Today</p>
 
-          <form className="space-y-4">
+          {error && <p className="text-red-500 text-center">{error}</p>}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="full-name" className="block text-sm font-medium text-gray-700">Full Name</label>
               <input type="text" id="full-name" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
-              <input type="email" id="email" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" />
+              <input 
+                type="email" 
+                id="email" 
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-              <input type="password" id="password" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" />
+              <input 
+                type="password" 
+                id="password" 
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div>
               <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-              <input type="password" id="confirm-password" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" />
+              <input 
+                type="password" 
+                id="confirm-password" 
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-color focus:border-primary-color sm:text-sm" 
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </div>
             <div>
               <label htmlFor="class" className="block text-sm font-medium text-gray-700">Enter your class</label>
@@ -46,8 +92,7 @@ export default function SignupForm() {
             </div>
             <div>
               <button 
-                type="button" 
-                onClick={openModal} 
+                type="submit" 
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-color hover:bg-light-pink focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color"
               >
                 Sign Up

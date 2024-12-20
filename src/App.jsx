@@ -6,8 +6,9 @@ import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import SignupForm from './components/SignupForm';
 import Group from './components/Group';
-import Subject from './components/Subject';  // Import the Subject component
-import QuestionSet from './components/QuestionSet';  // Import the QuestionSet component
+import Subject from './components/Subject';
+import QuestionSet from './components/QuestionSet';
+import Dashboard from './components/Dashboard'; // Import the Dashboard component
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signupform" element={<SignupForm />} />
           <Route path="/group" element={<Group />} />
-          <Route path="/subject" element={<Subject />} /> {/* Route for Subject */}
-          <Route path="/questionset/:subject" element={<QuestionSet />} /> {/* Dynamic Route for QuestionSet */}
+          <Route path="/subject" element={<Subject />} />
+          <Route path="/questionset/:subject" element={<QuestionSet />} />
+          <Route path="/dashboard" element={<Dashboard />} /> {/* Dashboard Route */}
         </Routes>
 
         {/* Always render AboutUs and Footer */}
